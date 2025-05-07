@@ -1,0 +1,41 @@
+public final class PorHoraeComissao extends PorHora implements Commission {
+    private double sales = 0.0;
+
+    public PorHoraeComissao(String nome, double valorh) {
+        super(nome, valorh, 0);  // Inicializa com 0 horas
+    }
+
+    public PorHoraeComissao(String nome, double valorh, int numh) {
+        super(nome, valorh, numh);
+    }
+
+    public PorHoraeComissao(String nome, double valorh, int numh, double sales) {
+        super(nome, valorh, numh);
+        setSales(sales);
+    }
+
+    // Implementação do método getPay() que calcula o pagamento com a comissão
+    @Override
+    public double getPay() {
+        return getValorHora() * getNumHora() + COMMISSION_RATE * sales;
+    }
+
+    public void setSales(double sales) {
+        if (sales < 0) {
+            this.sales = 0.0;
+        } else {
+            this.sales = sales;
+        }
+    }
+
+    public double getSales() {
+        return sales;
+    }
+
+    // Método para imprimir os valores de pagamento
+    public void printPay() {
+        System.out.printf("Ganho por Hora:      %8.2f\n", getValorHora() * getNumHora());
+        System.out.printf("Ganho por Comissao:  %8.2f\n", COMMISSION_RATE * sales);
+        System.out.printf("Total a Receber:     %8.2f\n", getPay());
+    }
+}
