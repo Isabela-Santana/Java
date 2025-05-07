@@ -1,0 +1,32 @@
+public class PorHora {
+    private String nome;
+    private double valorHora;
+    private int numHora;
+
+    public PorHora(String nome, double valorHora, int numHora) {
+        this.nome = nome;
+        this.valorHora = valorHora;
+        this.numHora = numHora;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getValorHora() {
+        return valorHora;
+    }
+
+    public int getNumHora() {
+        return numHora;
+    }
+
+    // Implementação do método getPay(), que calcula o pagamento com base nas horas
+    public double getPay() {
+        return valorHora * numHora;
+    }
+
+    public void printPay() {
+        System.out.printf("%10s: ganha %8.2f\n", nome, getPay());
+    }
+}
