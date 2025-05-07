@@ -1,0 +1,24 @@
+public class FolhadePagamento {
+
+    public static void main(String[] args[]) {
+        // Criando o array de empregados
+
+        Empregado[] listaPag = new Empregado[10];
+
+        // Criando instâncias com diferentes tipos de empregados
+        listaPag[0] = new PorComissao("Maria");
+        listaPag[1] = new PorHora("Pedro", 40.0, 0);
+        listaPag[2] = new PorHoraeComissao("Leonardo", 15.0, 200);
+
+        // Definindo as vendas para os empregados que recebem comissão
+        ((PorComissao) listaPag[0]).setSales(25000);
+        ((PorHoraeComissao) listaPag[2]).setSales(10000);
+
+        // Exibindo o pagamento de cada empregado
+        for (Empregado empregado : listaPag) {
+            if (empregado != null) {
+                empregado.printPay();
+            }
+        }
+    }
+}
