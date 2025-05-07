@@ -1,0 +1,5 @@
+public interface Commission {
+  
+    double COMMISSION_RATE = 0.10;  // A taxa constante de comissão
+    void setSales(double sales);    // Método para definir as vendas
+}
