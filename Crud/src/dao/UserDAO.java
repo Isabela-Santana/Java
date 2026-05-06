@@ -28,7 +28,6 @@ public class UserDAO {
     }
 
     public UserModel findById(final long id) {
-        // CORREÇÃO AQUI: Passando o 'id' como segundo argumento do String.format
         return models.stream()
             .filter(u -> u.getId() == id)
             .findFirst()
