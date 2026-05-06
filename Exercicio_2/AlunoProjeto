@@ -1,0 +1,43 @@
+package com.mycompany.principal;
+
+
+public class AlunoProjeto extends Aluno {
+    private String area;
+    private double valor;
+    
+    
+    public AlunoProjeto (String nome, int matricula, int periodo, String area, double valor){
+        super(nome ,matricula ,periodo);
+        this.area = area;
+        this.valor = valor;     
+    }
+
+    public AlunoProjeto() {
+    }
+    
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) throws ExcecaoDadoInvalido {
+         if(valor < 0){
+            throw new ExcecaoDadoInvalido();
+        }
+        this.valor = valor;
+    }
+    
+    @Override
+    public void mostrarDados(){
+        super.mostrarDados();
+        System.out.println("Area:" + area);
+        System.out.println("Valor:" + valor);
+    }
+}

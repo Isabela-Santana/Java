@@ -1,0 +1,126 @@
+package com.mycompany.principal;
+
+import java.util.Scanner;
+
+public class Principal {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int escolha;
+        do {
+            System.out.println("**** Escolha uma das opcoes abaixo para iniciar a sessao.***");
+            System.out.println("1- Aluno.");
+            System.out.println("2- Aluno Projeto.");
+            System.out.println("3- Aluno Iniciacao Cientifica.");
+            System.out.println("4 - Sair.");
+            escolha = scanner.nextInt();
+            scanner.nextLine();
+            /*para limpar o buffer*/
+            
+            
+
+            System.out.println("Nome:");
+            String nome = scanner.nextLine();
+            System.out.println("Matricula:");
+            int matricula = scanner.nextInt();
+            System.out.println("Periodo:");
+            int periodo = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (escolha) {
+                case 1:
+                    try {
+                        validarDadosAluno(nome, matricula, periodo);
+                        Aluno aluno = new Aluno(nome, matricula, periodo);
+                        System.out.println("\n**** Dados do Aluno: ****");
+                        aluno.mostrarDados();
+                    } catch (ExcecaoDadoInvalido ex) {
+                        System.out.println("Erro: " + ex.getMessage());
+                    }
+                    break;
+
+                case 2:
+                    try {
+                        System.out.println("Area:");
+                        String area = scanner.nextLine();
+                        System.out.println("Valor:");
+                        double valor = scanner.nextDouble();
+                        scanner.nextLine();
+                        System.out.println("Disciplina:");
+                        String disciplina = scanner.nextLine();
+                        validarDadosAlunoMonitoria(nome, matricula, periodo, area, valor, disciplina);
+                        AlunoMonitoria aluno = new AlunoMonitoria(nome, matricula, periodo, area, valor, disciplina);
+                        System.out.println("\n**** Dados do Aluno Monitoria: ****");
+                        aluno.mostrarDados();
+                    } catch (ExcecaoDadoInvalido ex) {
+                        System.out.println("Erro: " + ex.getMessage());
+                    }
+                    break;
+
+                case 3:
+                    try {
+                        System.out.println("Area:");
+                        String area = scanner.nextLine();
+                        System.out.println("Valor:");
+                        double valor = scanner.nextDouble();
+                        scanner.nextLine();
+                        System.out.println("Disciplina:");
+                        String disciplina = scanner.nextLine();
+                        System.out.println("Nome do Projeto:");
+                        String nomeProjeto = scanner.nextLine();
+                        validarDadosAlunoIniciacaoCientifica(nome, matricula, periodo, area, valor, disciplina, nomeProjeto);
+                        AlunoIniciacaoCientifica aluno = new AlunoIniciacaoCientifica(nome, matricula, periodo, area, valor, disciplina, nomeProjeto);
+                        System.out.println("\n**** Dados do Aluno Iniciacao Cientifica: ****");
+                        aluno.mostrarDados();
+                    } catch (ExcecaoDadoInvalido ex) {
+                        System.out.println("Erro: " + ex.getMessage());
+                    }
+                    break;
+                case 4:
+                    break;
+
+                default:
+                    break;
+            }
+        } while (escolha != 4);
+
+        scanner.close();
+
+    }
+/* criei a validacao tendo envista que o compilador nao via nenhuma linha dentro do try para lancar a excecaodadoinvalido*/
+public static void validarDadosAluno(String nome, int matricula, int periodo) throws ExcecaoDadoInvalido {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new ExcecaoDadoInvalido("Nome inválido!");
+        }
+        if (matricula < 0) {
+            throw new ExcecaoDadoInvalido("Matrícula inválida!");
+        }
+        if (periodo < 0) {
+            throw new ExcecaoDadoInvalido("Período inválido!");
+        }
+    }
+
+    public static void validarDadosAlunoMonitoria(String nome, int matricula, int periodo,
+                                                 String area, double valor, String disciplina)
+            throws ExcecaoDadoInvalido {
+        validarDadosAluno(nome, matricula, periodo);
+        if (area == null || area.trim().isEmpty()) {
+            throw new ExcecaoDadoInvalido("Área inválida!");
+        }
+        if (valor < 0) {
+            throw new ExcecaoDadoInvalido("Valor inválido!");
+        }
+        if (disciplina == null || disciplina.trim().isEmpty()) {
+            throw new ExcecaoDadoInvalido("Disciplina inválida!");
+        }
+    }
+
+    public static void validarDadosAlunoIniciacaoCientifica(String nome, int matricula, int periodo,
+                                                           String area, double valor, String disciplina,
+                                                           String nomeProjeto) throws ExcecaoDadoInvalido {
+        validarDadosAlunoMonitoria(nome, matricula, periodo, area, valor, disciplina);
+        if (nomeProjeto == null || nomeProjeto.trim().isEmpty()) {
+            throw new ExcecaoDadoInvalido("Nome do projeto inválido!");
+        }
+    }
+}

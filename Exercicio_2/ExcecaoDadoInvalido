@@ -1,0 +1,13 @@
+package com.mycompany.principal;
+
+
+public class ExcecaoDadoInvalido extends Exception {
+
+    public ExcecaoDadoInvalido() {
+        super("Erro: Informacao invalida!");
+    }
+    public ExcecaoDadoInvalido(String mensagem) {
+        super(mensagem);
+    }
+  
+}

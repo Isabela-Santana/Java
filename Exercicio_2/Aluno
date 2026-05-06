@@ -1,0 +1,60 @@
+package com.mycompany.principal;
+
+
+
+public class Aluno {
+    private String nome;
+    private int matricula;
+    private int periodo;
+    
+    public Aluno( String nome , int matricula, int periodo){
+        this.nome = nome;
+        this.matricula = matricula;
+        this.periodo = periodo;
+    }
+
+    public Aluno() {
+    }
+    
+     
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome)throws ExcecaoDadoInvalido {
+        if( nome == null){
+            throw new ExcecaoDadoInvalido();
+        }
+        this.nome = nome;
+    }
+
+    public int getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(int matricula) throws ExcecaoDadoInvalido{
+        if( matricula < 0){
+            throw new ExcecaoDadoInvalido();
+        }
+        this.matricula = matricula;
+    }
+
+    public int getPeriodo() {
+        return periodo;
+    }
+
+    public void setPeriodo(int periodo) throws ExcecaoDadoInvalido {
+        if(periodo < 0){
+            throw new ExcecaoDadoInvalido();
+        }
+        this.periodo = periodo;
+    }
+    
+
+    public void mostrarDados(){
+        System.out.println("Nome:" + nome);
+        System.out.println("Matricula:" + matricula);
+        System.out.println("Periodo:" + periodo);
+    }
+    
+  }

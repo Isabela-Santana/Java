@@ -1,0 +1,31 @@
+package com.mycompany.principal;
+
+public class AlunoIniciacaoCientifica extends AlunoMonitoria {
+    private String nomeProjeto;
+
+    public AlunoIniciacaoCientifica( String nome, int matricula, int periodo, String area, double valor, String disciplina,String nomeProjeto) {
+        super( nome, matricula, periodo, area, valor, disciplina);
+        this.nomeProjeto = nomeProjeto;
+    }
+
+    public AlunoIniciacaoCientifica() {
+    }
+
+    public String getNomeProjeto() {
+        return nomeProjeto;
+    }
+
+    public void setNomeProjeto(String nomeProjeto) throws ExcecaoDadoInvalido {
+        if(nomeProjeto == null){
+            throw new ExcecaoDadoInvalido();
+        }
+        this.nomeProjeto = nomeProjeto;
+    }
+    
+    @Override
+    public void mostrarDados(){
+        super.mostrarDados();
+        System.out.println("Nome do projeto:" + nomeProjeto);
+    }
+    
+}
