@@ -1,0 +1,21 @@
+
+# Arquivos de compilação e pacotes
+/target/
+/.settings/
+/.classpath
+/.project
+/.factorypath
+
+# IDEs (VS Code, IntelliJ, Eclipse)
+.vscode/
+.idea/
+*.iml
+
+# Logs e arquivos do sistema
+*.log
+.DS_Store
+
+# Arquivos de propriedades com senhas locais (se houver)
+application-dev.properties
+application-local.properties
+.env
